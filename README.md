@@ -181,6 +181,12 @@ SET ClientName = 'Mariana Perez', City= 'Brooklyn,NY'
 WHERE ClientId = 6;
 ```
 
+### How to modify the table and add a field
+
+```sql
+ALTER TABLE students ADD email VARCHAR(100);
+```
+
 #### Deleting A User From The Table
 ```sql
 DELETE FROM Client WHERE ClientName='Mariana Marufo';
@@ -194,6 +200,16 @@ SELECT * from fortran32 ORDER BY first_name ASC;
 ## Primary Keys
 - A Column in the Table which uniquely identifies the a record in our table
 
+
+
+
+### Sorting 
+
+#### Sort by id
+
+```sql
+SELECT * from students ORDER BY id;
+```
 
 
 ## Operators
@@ -211,6 +227,12 @@ SELECT * from fortran32 OFFSET 5 LIMIT 5;
 ### Starting from the nth person query to the very end
 ```sql
 SELECT * from fortran32 OFFSET 5;
+```
+
+### View only specific columns
+
+```sql
+SELECT name,major from students;
 ```
 
 ### List All the Databases
@@ -235,3 +257,69 @@ create database nelanisacobol32;
 psql -h localhost -p 5432 -u nelanslovecs nelanisacobol32;
 ```
 
+
+### Show the list of roles of users in the db
+
+```sql
+\du
+```
+
+### Add Role to user
+
+```sql
+ALTER ROLE omarb REPLICATION;
+```
+
+### Give role to create DB
+
+```sql
+ALTER ROLE omarb CREATEDB;
+```
+
+
+### Give role to become super user
+
+```sql
+ALTER ROLE omarb SUPERUSER;
+```
+
+
+### Defining the primary key and foreign key
+
+```sql
+CREATE TABLE students(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    major VARCHAR(30),
+    gpa NUMERIC(3,2),
+    enrollment_yr INT
+);
+```
+
+
+### View al the tables in the db
+
+```sql
+\dt
+```
+
+### Add elements to database STEP 1
+
+```sql
+INSERT INTO students(name,major, gpa, enrollment)
+```
+
+### Add the values to columns STEP 2
+
+```
+VALUES("Youssef","GE", 3.7,2024);
+```
+
+
+### Update
+
+```sql
+UPDATE students
+SET GPA = 2.9
+WHERE name = 'Josephine';
+```
